@@ -1,11 +1,11 @@
 class stunnel::debian inherits stunnel::linux {
 
-  Package[stunnel] {
+  Package['stunnel'] {
     name => 'stunnel4',
   }
 
-  Service[stunnel] {
-    name => 'stunnel4',
+  Service['stunnel'] {
+    name    => 'stunnel4',
     pattern => '/usr/bin/stunnel4',
   }
 

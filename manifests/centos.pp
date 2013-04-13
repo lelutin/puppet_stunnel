@@ -18,14 +18,14 @@ class stunnel::centos inherits stunnel::linux {
 
   Service['stunnel']{
     hasstatus => true,
-    require => [ User['stunnel'], File['/etc/init.d/stunnel'] ]
+    require   => [ User['stunnel'], File['/etc/init.d/stunnel'] ]
   }
 
   file { '/etc/stunnel/stunnel.conf':
-    source  => [ "puppet:///modules/site-stunnel/${::fqdn}/stunnel.conf",
-                 "puppet:///modules/site-stunnel/${stunnel_cluster}/stunnel.conf",
-                 'puppet:///modules/site-stunnel/stunnel.conf',
-                 "puppet:///modules/stunnel/${::operatingsystem}/stunnel.conf" ],
+    source  => ["puppet:///modules/site-stunnel/${::fqdn}/stunnel.conf",
+                "puppet:///modules/site-stunnel/${stunnel_cluster}/stunnel.conf",
+                'puppet:///modules/site-stunnel/stunnel.conf',
+                "puppet:///modules/stunnel/${::operatingsystem}/stunnel.conf" ],
     require => Package['stunnel'],
     notify  => Service['stunnel'],
     owner   => root,

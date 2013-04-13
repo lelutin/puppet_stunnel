@@ -61,8 +61,8 @@ define stunnel::service (
     ensure  => $ensure,
     content => template('stunnel/service.conf.erb'),
     require => File['/etc/stunnel'],
-    notify  => Service[stunnel],
-    owner   => root,
+    notify  => Service['stunnel'],
+    owner   => 'root',
     group   => 0,
     mode    => '0600';
   }
